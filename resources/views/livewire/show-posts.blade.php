@@ -1,8 +1,12 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    {{$search}}
 
 
     <div class="container">Lista de Posts</div>
+    <div class="container">
+        <input type="text" wire:model='search'>
+    </div>
     <div class="container">
         <table class="table table-bordered border-primary">
             <thead>
@@ -25,9 +29,9 @@
 
             </tbody>
         </table>
-        <div>
+        {{-- <div>
             {{$posts->links()}}
-        </div>
+        </div> --}}
     </div>
 
 </div>

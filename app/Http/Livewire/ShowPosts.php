@@ -9,12 +9,16 @@ use Livewire\WithPagination;
 class ShowPosts extends Component
 {
 
-use WithPagination;
+    use WithPagination;
+
+    public $search;
 
     public function render()
     {
 
-        $posts = Post::orderBy('id','desc')->paginate(10);
+        $posts = Post::where('title','like', '%' . $this->search . '%')
+                     ->orWhere('content','like', '%' . $this->search . '%')
+                     ->get();
 
         return view('livewire.show-posts', compact('posts'));
     }
