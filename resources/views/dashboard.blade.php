@@ -5,5 +5,9 @@
         </h2>
     </x-slot>
 
-    <x-jet-welcome />
+    @livewire('show-posts')
+
+
+
+    {{-- <x-jet-welcome /> --}}
 </x-app-layout>
