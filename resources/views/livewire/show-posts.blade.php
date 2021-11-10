@@ -12,9 +12,9 @@
             <table class="table table-bordered border-primary">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Contenido</th>
+                        <th scope="col" wire:click="order('id')">ID</th>
+                        <th scope="col" wire:click="order('title')">Titulo</th>
+                        <th scope="col" wire:click="order('content')">Contenido</th>
                     </tr>
                 </thead>
 
