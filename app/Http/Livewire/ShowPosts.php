@@ -28,16 +28,20 @@ class ShowPosts extends Component
     }
 
     public function order($sort){
-        
+
+        //dd($sort);
+
+        //dd($this->sort);
+
         if($this->sort == $sort){
             if ($this->direction == 'desc') {
                 $this->direction = 'asc';
             }
             else{
-                $this->direction == 'desc';
+                $this->direction = 'desc';
             }
         }else{
-            $this->sort == $sort;
+            $this->sort = $sort;
             $this->direction = 'asc';
         }
 
