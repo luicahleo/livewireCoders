@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="{{asset('vendor/fontawesome/css/all.min.css')}}">
-        @livewireStyles
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased bg-light">
-        <x-jet-banner />
-        @livewire('navigation-menu')
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{asset('vendor/fontawesome/css/all.min.css')}}">
+    @livewireStyles
 
-        <!-- Page Heading -->
-        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
-            <div class="container">
-                {{ $header }}
-            </div>
-        </header>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- Page Content -->
-        <main class="container my-5">
-            {{ $slot }}
-        </main>
+</head>
 
-        @stack('modals')
+<body class="font-sans antialiased bg-light">
+    <x-jet-banner />
+    @livewire('navigation-menu')
 
-        @livewireScripts
+    <!-- Page Heading -->
+    <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+        <div class="container">
+            {{ $header }}
+        </div>
+    </header>
 
-        @stack('scripts')
-    </body>
+    <!-- Page Content -->
+    <main class="container my-5">
+        {{ $slot }}
+    </main>
+
+    @stack('modals')
+
+    @livewireScripts
+
+    @stack('scripts')
+
+    <script>
+        Livewire.on('alert', function(message){
+            Swal.fire(
+                'Exito',
+                message,
+                'success'
+            )
+        })
+        
+
+    </script>
+</body>
+
 </html>
