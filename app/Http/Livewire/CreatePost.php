@@ -12,7 +12,27 @@ class CreatePost extends Component
 
     public $title, $content;
 
+    // propiedad para validacion
+    protected $rules = [
+        'title' => 'required',
+        'content' => 'required'
+        
+    ];
+
+    //metodo para validacion en tiempor real
+    //metodo que se activa cada vez que modificamos las propiedades
+    // public function updated($propertyName)
+    // {
+    //     # code...
+    //     $this->validateOnly($propertyName);
+    // }
+
     public function save(){
+
+        //llamamos al metodo validate para validar los campos
+        $this->validate();
+
+
         Post::create([
             'title' => $this->title,
             'content' => $this->content
