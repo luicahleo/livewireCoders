@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        //eliminamos en el caso de que existiera la carpeta posts
+        Storage::deleteDirectory('posts');
+
+        Storage::makeDirectory('posts'); //Storage crea una nueva carpeta 
+
          \App\Models\Post::factory(100)->create();
     }
 }

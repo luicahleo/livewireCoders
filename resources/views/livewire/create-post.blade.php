@@ -10,6 +10,19 @@
             Crear nuevo post
         </x-slot>
         <x-slot name="content">
+         {{-- mensaje de alerta para indicar que se esta cargando --}}
+         {{--  wire:loading wire:target='image', le decimos que actue de acuerdo al propiedad image--}}
+         <div class="alert alert-warning" role="alert" wire:loading wire:target='image'>
+            Imagen cargando, espere hasta que se haya procesado!
+          </div>
+
+            {{-- para mostrar imagenen al cargar --}}
+            @if ($image)
+            <img class="mb-4" src="{{$image->temporaryUrl()}}" alt="">
+                
+            @endif
+
+
             <div class="mb-4">
                 <x-jet-label value="Titulo del post" />
                 {{-- wire:model.defer solamente actuara cuando desencadenemos una accion --}}
@@ -37,13 +50,21 @@
 
 
                 </div>
+
+                <div>
+                    <input type="file" wire:model='image' id="{{$identificador}}">
+                    @error('image')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
             </div>
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button>Cacelar</x-jet-secondary-button>
             {{-- wire:loading.attr='disabled' wire:target='save' class="disabled:opacity-50"   .... esta linea es para decirle que solo ejecute el metodo save
             que desabilite el boton mientras esta cargando con una opacidad del 50 % --}}
-            <x-jet-danger-button wire:click='save' wire:loading.attr='disabled' wire:target='save' class="disabled:opacity-50">
+            {{--   wire:target='save, image' esto es para que desabilite cuando se graba o se esta cargando la imagen--}}
+            <x-jet-danger-button wire:click='save' wire:loading.attr='disabled' wire:target='save, image' class="disabled:opacity-50">
                 Crear post
             </x-jet-danger-button>
         </x-slot>
