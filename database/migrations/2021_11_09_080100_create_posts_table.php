@@ -17,6 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
+            //para las imagenes no olvidarse configurar donde quiero que se guarde las imagenes
+            //eso esta en config/filesystemas.php cambiar local por public
+            $table->string('image');
 
             $table->timestamps();
         });

@@ -13,10 +13,12 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        //la siguiente linea hace posts/ruta del la imagen/nombreImagen
+
         return [
             'title' => $this->faker->sentence(),
-            'content' => $this->faker->text()
-
+            'content' => $this->faker->text(),
+            'image' => 'posts/' . $this->faker->image('public/storage/posts', 320, 240, null, false)
         ];
     }
 }
