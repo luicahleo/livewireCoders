@@ -11,10 +11,22 @@ class ShowPosts extends Component
 
     use WithPagination;
 
-    public $search;
+    public $search, $post, $immage, $identificador;
 
     public $sort = 'id';
     public $direction = 'desc';
+
+    public $open_edit = false;
+
+    public function mount()
+    {
+        $this->identificador = rand();
+    }
+
+    protected $rules = [
+        'post.title' => 'required',
+        'post.content' => 'required'
+    ];
 
     protected $listeners = ['render'=>'render'];
 
@@ -47,5 +59,11 @@ class ShowPosts extends Component
             $this->direction = 'asc';
         }
 
+    }
+
+    public function edit(Post $post)
+    {
+        $this->post = $post;
+        $this->open_edit = true;
     }
 }

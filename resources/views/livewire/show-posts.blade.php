@@ -86,7 +86,12 @@
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
                     <td>{{$post->content}}</td>
-                    <th>@livewire('edit-post', ['post' => $post], key($post->id))</th>
+                    <th>
+                        {{-- @livewire('edit-post', ['post' => $post], key($post->id)) --}}
+                        <a class="btn btn-outline-success" wire:click="edit({{$post}})">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </th>
                 </tr>
                 @endforeach
 
@@ -106,4 +111,24 @@
     @endif
 
 
+    {{-- el modal siempre necesita estos tres campos --}}
+    <x-jet-dialog-modal wire:model="open_edit">
+        <x-slot name='title'>
+            Editar el post
+        </x-slot>
+        <x-slot name='content'>
+            <div class="mb-4">
+                <x-jet-label value="Titulo del post" />
+                <x-jet-input type="text" class="w-full" />
+            </div>
+        </x-slot>
+        <x-slot name='footer'>
+            <x-jet-secondary-button wire:click="$set('open_edit', false)">
+                Cacelar
+            </x-jet-secondary-button>
+            <x-jet-danger-button wire:click='save' wire:loading.attr='disabled' wire:target='save, image' class="disabled:opacity-50">
+                Crear post
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>
