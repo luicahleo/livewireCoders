@@ -14,7 +14,7 @@ return [
     */
 
     //para almacenar imagenes en public y no en local, por eso cambie local por public
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'public'),
 
     /*
     |--------------------------------------------------------------------------

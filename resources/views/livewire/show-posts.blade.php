@@ -73,6 +73,9 @@
                         <i class="fas fa-sort mr-4"></i>
                         @endif
                     </th>
+                    <th class="float-right"></th>
+
+                    
                 </tr>
             </thead>
 
@@ -83,6 +86,7 @@
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
                     <td>{{$post->content}}</td>
+                    <th>@livewire('edit-post', ['post' => $post], key($post->id))</th>
                 </tr>
                 @endforeach
 
