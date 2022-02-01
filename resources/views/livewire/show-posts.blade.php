@@ -1,11 +1,24 @@
 <div>
     <div class="container">
         <div class="row">
+
+            <div class="px-6 py-4 flex items-center">
+                <div class="flex items-center">
+                    <span>Mostrar</span>
+                    <select class="mx-2 form-control" wire:model="cant">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entradas</span>
+                </div>
+            </div>
+
             <div class="col-12 col-md-8 col-lg-10 mb-3">
                 <x-jet-input type="text" wire:model="search" placeholder="Buscador" />
-
-
             </div>
+
             <div class="col-12 col-md-4 col-lg-2 ">
                 @livewire('create-post')
 
@@ -164,36 +177,4 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-
-
-
-
-
-
-
-
-
-
-
-    {{-- el modal siempre necesita estos tres campos --}}
-    {{-- <x-jet-dialog-modal wire:model="open_edit">
-        <x-slot name='title'>
-            Editar el post
-        </x-slot>
-        <x-slot name='content'>
-            <div class="mb-4">
-                <x-jet-label value="Titulo del post" />
-                <x-jet-input type="text" class="w-full" />
-            </div>
-        </x-slot>
-        <x-slot name='footer'>
-            <x-jet-secondary-button wire:click="$set('open_edit', false)">
-                Cacelar
-            </x-jet-secondary-button>
-            <x-jet-danger-button wire:click='save' wire:loading.attr='disabled' wire:target='save, image'
-                class="disabled:opacity-50">
-                Crear post
-            </x-jet-danger-button>
-        </x-slot>
-    </x-jet-dialog-modal> --}}
 </div>
