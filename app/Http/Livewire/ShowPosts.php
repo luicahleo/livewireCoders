@@ -30,6 +30,13 @@ class ShowPosts extends Component
         $this->post = new Post();
     }
 
+    //metodo para el buscador, para que se actualice cuando estoy buscando algo en el input
+    //este metodo tiene que llamarse updatingSearch, porque hace referencia a la propiedad $search
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     protected $rules = [
         'post.title' => 'required',
         'post.content' => 'required',
