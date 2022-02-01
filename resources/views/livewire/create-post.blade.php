@@ -47,11 +47,9 @@
                     @error('content')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
-
-
                 </div>
 
-                <div>
+                <div class="mt-2">
                     <input type="file" wire:model='image' id="{{$identificador}}">
                     @error('image')
                     <span class="text-danger">{{$message}}</span>
@@ -60,7 +58,7 @@
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button>Cacelar</x-jet-secondary-button>
+            <x-jet-secondary-button wire:click:="$set('open_edit', false)">Cacelar</x-jet-secondary-button>
             {{-- wire:loading.attr='disabled' wire:target='save' class="disabled:opacity-50"   .... esta linea es para decirle que solo ejecute el metodo save
             que desabilite el boton mientras esta cargando con una opacidad del 50 % --}}
             {{--   wire:target='save, image' esto es para que desabilite cuando se graba o se esta cargando la imagen--}}

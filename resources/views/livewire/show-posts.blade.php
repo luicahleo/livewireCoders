@@ -87,10 +87,10 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->content}}</td>
                     <th>
-                        {{-- @livewire('edit-post', ['post' => $post], key($post->id)) --}}
-                        <a class="btn btn-outline-success" wire:click="edit({{$post}})">
+                        @livewire('edit-post', ['post' => $post], key($post->id))
+                        {{-- <a class="btn btn-outline-success" wire:click="edit({{$post}})">
                             <i class="fas fa-edit"></i>
-                        </a>
+                        </a> --}}
                     </th>
                 </tr>
                 @endforeach
