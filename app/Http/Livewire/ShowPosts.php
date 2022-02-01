@@ -8,6 +8,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 use Livewire\WithPagination;
+
 class ShowPosts extends Component
 {
 
@@ -43,7 +44,7 @@ class ShowPosts extends Component
         $posts = Post::where('title','like', '%' . $this->search . '%')
                      ->orWhere('content','like', '%' . $this->search . '%')
                      ->orderBy($this->sort, $this->direction)
-                     ->get();
+                     ->paginate(10);
 
         return view('livewire.show-posts', compact('posts'));
     }

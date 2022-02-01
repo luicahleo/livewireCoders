@@ -85,9 +85,7 @@
 
                 </tbody>
             </table>
-            {{-- <div>
-            {{$posts->links()}}
-        </div> --}}
+
         </div>
 
     @else
@@ -97,6 +95,13 @@
         </div>
 
     @endif
+
+    @if ($post->hasPages())
+        <div class="px-6 py-3">
+            {{ $posts->links() }}
+        </div>
+    @endif
+
 
 
     <x-jet-dialog-modal wire:model="open_edit">
@@ -147,7 +152,8 @@
 
         <x-slot name='footer'>
             <x-jet-secondary-button wire:click="$set('open_edit', false)">Cacelar</x-jet-secondary-button>
-            {{-- wire:loading.attr='disabled' wire:target='save' class="disabled:opacity-50"   .... esta linea es para decirle que solo ejecute el metodo save
+            {{-- wire:loading.attr='disabled' wire:target='save' class="disabled:opacity-50" .... esta linea es para
+            decirle que solo ejecute el metodo save
             que desabilite el boton mientras esta cargando con una opacidad del 50 % --}}
             {{-- wire:target='save, image' esto es para que desabilite cuando se graba o se esta cargando la imagen --}}
             <x-jet-danger-button wire:click='update' wire:loading.attr='disabled' wire:target='save, image'
