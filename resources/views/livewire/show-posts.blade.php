@@ -1,4 +1,4 @@
-<div>
+<div wire:init='loadPosts'>
     <div class="container">
         <div class="row">
 
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    @if ($posts->count())
+    @if (count($posts))
 
         <div class="container mt-4">
             <h2>Lista de Posts</h2>
@@ -101,6 +101,12 @@
 
         </div>
 
+        @if ($posts->hasPages())
+        <div class="px-6 py-3">
+            {{ $posts->links() }}
+        </div>
+    @endif
+
     @else
 
         <div class="container">
@@ -109,11 +115,7 @@
 
     @endif
 
-    @if ($posts->hasPages())
-        <div class="px-6 py-3">
-            {{ $posts->links() }}
-        </div>
-    @endif
+    
 
 
 
